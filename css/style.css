@@ -1,0 +1,77 @@
+* {
+    font-family: 'Helvetica Neue', sans-serif;               
+}
+
+.main-bg {
+    background-color: #F1F3FF;
+}
+
+.blue-bg {
+    background-color: #0D28A6;
+}
+
+.menu-gap {
+    gap: 32px;
+}
+
+.gap-each {
+    margin-top: 104px;
+}
+
+.circ {
+    background-color: #CFD4ED;
+    color: #0D28A6;
+    padding: 5px;
+    border-radius: 50px;
+    margin-right: 10px;
+}
+
+@media (min-width: 992px) {
+    .why-us-card {
+        width: 288px;
+        margin-right: 16px;
+    }
+    
+    .testi-size {
+        width: 832px;
+        height: 270px;
+    }
+    
+    .grid-container {
+        display: grid;
+        gap: 8px;
+        padding: 50px 120px;
+        grid-template: auto / auto auto;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .item {
+        padding: 0 10px;
+    }
+    
+    .photo1 {
+        grid-row: 1/4;
+        align-items: center;
+    }
+}
+
+@media (max-width: 992px) {
+    .set-sm {
+        display: grid;
+        gap: 24px;
+        padding: 50px 90px;
+    }
+
+    .photo1, .rate {
+        text-align: center;
+    }
+}
+
+.promo-gap {
+    padding: 64px 270px;
+}
+
+.no-bullets {
+    list-style: none;
+}
