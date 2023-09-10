@@ -1,4 +1,4 @@
-Tugas 2: Membuat laman cari mobil, berisi search/filter bar untuk menyeleksi mobil yang tersedia berdasarkan tipe driver, tanggal, waktu, dan kapasitas penumpang.
+Tugas 2: Membuat laman cari mobil, berisi search/filter bar untuk menyeleksi mobil-mobil yang tersedia berdasarkan tipe driver, tanggal, waktu, dan kapasitas penumpang.
 
 Created with HTML5, CSS 3, JavaScript, and Bootstrap V5.3.1.
 
