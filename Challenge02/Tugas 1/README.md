@@ -4,3 +4,5 @@ Created with HTML5 & JavaScript.
 
 // Reference
 - Template: https://gitlab.com/fnurhidayat/javascript-array-challenge/-/archive/main/javascript-array-challenge-main.zip
+
+Please download this project folder and run it using Visual Studio Code or another text editor to see the results.
