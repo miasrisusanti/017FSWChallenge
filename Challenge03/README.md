@@ -1,6 +1,7 @@
-Tugas 3: Membuat HTTP Server dengan menggunakan Express.js yang sesuai dengan kaidah RESTful API.
+Tugas 3: Create a HTTP server using Express.js & suitable to RESTful API's rules.
 
 Created with JavaScript, Node.js/Express.js, and tested with Postman.
+
 API Documentation: `https://www.postman.com/miesedapkrispi/workspace/api-mia/collection/29759373-66cdd7cd-87d4-4d61-a55f-f5ac700beb72?action=share&creator=29759373`
 
 How to run this project:
@@ -17,4 +18,3 @@ Endpoint explanation:
 4. POST /cars will return a response with the newly created car data.
 5. PUT /cars/:id will return a response with the updated data.
 6. DELETE /cars/:id will return a response with the deleted data.
-
