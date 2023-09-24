@@ -5,5 +5,5 @@ Testing Documentation: https://www.postman.com/miesedapkrispi/workspace/api-mia/
 
 How to run this project:
 1. Clone the repository
-   "git clone https://github.com/miasrisusanti/017FSWChallenge"
+   `git clone https://github.com/miasrisusanti/017FSWChallenge`
 
