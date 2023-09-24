@@ -10,4 +10,11 @@ How to run this project:
 4. Start the project `npm run start`
 5. You can see the project through localhost or using the API documentation in Postman.
 
+Endpoint explanation:
+`1. GET / will open the root endpoint with a response of { "message": "Ping successful" }.
+2. GET /cars will display the list of cars.
+3. GET /cars/:id will retrieve a specific car's data from the list by its ID.
+4. POST /cars will return a response with the newly created car data.
+5. PUT /cars/:id will return a response with the updated data.
+6. DELETE /cars/:id will return a response with the deleted data.`
 
