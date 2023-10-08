@@ -1,5 +1,3 @@
-Challenge 04:
+# Challenge 04: Create a HTTP Server for managing car data via DBMS
 
-Cars Management Entity Relationship Diagram: `https://dbdiagram.io/d/Car-Management-651feaebffbf5169f02c8375`
-
-<iframe width="560" height="315" src='https://dbdiagram.io/embed/651feaebffbf5169f02c8375'> </iframe>
+> [Cars Management Entity Relationship Diagram](https://dbdiagram.io/d/Car-Management-651feaebffbf5169f02c8375)
