@@ -23,7 +23,7 @@ cd/Challenge04
 npm i
 ```
 
-4. Check the config/config.json. Please change the `username` and `password` to match your settings in PostgreSQL. You can also change the `database` to the name of a database you may have created previously. ___NOTE:__ If you haven't created one, please provide a name to create a new database. And then create the database with:_ 
+4. Check the config/config.json. Please change the `username` and `password` to match your settings in PostgreSQL. You can also change the `database` to the name of a database you may have created previously (please change it in the `test_sequelize.js` too). ___NOTE:__ If you haven't created one, please provide a name to create a new database. And then create the database with:_ 
 ```
 npx sequelize-cli db:create
 ```
