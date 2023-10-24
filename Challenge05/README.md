@@ -55,3 +55,8 @@ npm run start
 5. PUT /cars/:id will return a response with the updated data.
 6. DELETE /cars/:id will return a response 204 No Content (data deleted).
 7. API Documentation /docs will return API documentation.
+   - Login Super Admin
+     ```
+     email: superadmin@gmail.com
+     password: superadmin
+     ```
