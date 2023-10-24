@@ -1,6 +1,6 @@
 ## Challenge 05: Create a HTTP Server for managing car data via DBMS with Authentication
 
-Created with JavaScript, Node.js/Express.js, PostgreSQL, and tested with [Postman](https://www.postman.com/miesedapkrispi/workspace/api-mia/collection/29759373-66cdd7cd-87d4-4d61-a55f-f5ac700beb72?action=share&creator=29759373).
+Created with JavaScript, Node.js/Express.js, PostgreSQL, and tested with [Postman](https://www.postman.com/miesedapkrispi/workspace/api-mia/collection/29759373-66cdd7cd-87d4-4d61-a55f-f5ac700beb72?action=share&creator=29759373) / Swagger OpenAPI.
 
 [Cars Management Entity Relationship Diagram](https://dbdiagram.io/d/Car-Management-651feaebffbf5169f02c8375)
 
