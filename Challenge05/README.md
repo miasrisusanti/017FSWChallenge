@@ -43,7 +43,7 @@ npx sequelize-cli db:seed:all
 npm run start
 ```
 
-8. You can see the project through localhost or using the API documentation in Postman.
+8. You can see the project through localhost or using the API documentation in Postman or in /docs endpoint.
 
 
 ### Endpoint Explanation
@@ -54,3 +54,4 @@ npm run start
 4. POST /cars will return a response with the newly created car data.
 5. PUT /cars/:id will return a response with the updated data.
 6. DELETE /cars/:id will return a response 204 No Content (data deleted).
+7. API Documentation /docs will return API documentation.
