@@ -4,7 +4,7 @@ Created with JavaScript, Node.js/Express.js, PostgreSQL, and tested with [Postma
 
 [Cars Management Entity Relationship Diagram](https://dbdiagram.io/d/Car-Management-651feaebffbf5169f02c8375)
 
-![ERD](https://github.com/miasrisusanti/017FSWChallenge/blob/b6cb03fdb2c9345b10ecb0f74272bfd73b2a2cc5/Challenge04/ERD-Car%20Management.png)
+![ERD](https://github.com/miasrisusanti/017FSWChallenge/blob/83dcd69dde286fb3d3a524fad1d603984430eb84/Challenge05/Car%20Management.png)
 
 
 ### How to run this project?
