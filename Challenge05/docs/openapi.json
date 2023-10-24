@@ -1,0 +1,704 @@
+{
+  "openapi": "3.0.3",
+
+  "info": {
+    "title": "Challenge 5 FSW - Cars Management with Authentication",
+    "description": "A simple cars management app with authentication, created with Express.js & PostgreSQL.\n### Notes:\n__Login as superadmin:__\n- email:superadmin@gmail.com\n- password:superadmin\n\n_You can only register an Admin when logged in as a Super Admin. Member can register freely._\n\n__Authenticate:__\n- Please login through /login endpoint.\n- Check the response, locate the token, and copy it.\n- Click the Authorize button and paste it on the Value box.\n- You can now access the features of this API.",
+    "version": "1.0.11"
+  },
+
+  "externalDocs": {
+    "description": "Repository on GitHub",
+    "url": "https://github.com/miasrisusanti/017FSWChallenge/tree/main/Challenge05"
+  },
+
+  "servers": [
+    {
+      "url": "http://localhost:8000",
+      "description": "localhost"
+    }
+  ],
+
+  "tags": [
+    {
+      "name": "ping",
+      "description": "test connection"
+    },
+    {
+      "name": "user",
+      "description": "registration & login"
+    },
+    {
+      "name": "cars",
+      "description": "everything about cars"
+    }
+  ],
+
+  "paths": {
+    
+    "/": {
+      "get": {
+        "tags": [
+          "ping"
+        ],
+        "summary": "Ping",
+        "description": "Return message ping successfully",
+        "operationId": "ping",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Ping"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/login": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Login with credentials",
+        "description": "Super Admin, Admin, and Member can login through this path.",
+        "operationId": "login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CredentialLogin"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CredentialLogin"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Password is not match"
+          },
+          "404": {
+            "description": "Email not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+
+    "/register/admin": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Registering Admin",
+        "description": "Super Admin can regist Admin through this path.",
+        "operationId": "registerAdmin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUser"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "bearer_auth": []
+          }
+        ]
+      }
+    },
+
+    "/register/member": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Registering Member",
+        "description": "Member can regist through this path.",
+        "operationId": "registerMember",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUser"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+
+    "/current": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Get the current login user",
+        "description": "Show current login user",
+        "operationId": "getCurrentUser",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CredentialLogin"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "bearer_auth": []
+          }
+        ]
+      }
+    },
+
+    "/cars": {
+      "get": {
+        "tags": [
+          "cars"
+        ],
+        "summary": "Get all cars",
+        "description": "Show all cars data",
+        "operationId": "getCars",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Car"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "bearer_auth": []
+          }
+        ]
+      },
+
+      "post": {
+        "tags": [
+          "cars"
+        ],
+        "summary": "Create a new car data",
+        "description": "Create a new car data. This action can only be performed by Super Admin and Admin.",
+        "operationId": "createCar",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddCar"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Car"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "bearer_auth": []
+          }
+        ]
+      }
+    },
+
+    "/cars/{id}": {
+      "get": {
+        "tags": [
+          "cars"
+        ],
+        "summary": "Find car by ID",
+        "description": "Show a car data by ID",
+        "operationId": "getCarsById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Car ID"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Car"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "ID Not Found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "bearer_auth": []
+          }
+        ]
+      },
+
+      "put": {
+        "tags": [
+          "cars"
+        ],
+        "summary": "Update car by ID",
+        "description": "Updating a car data by ID. This action can only be performed by Super Admin and Admin.",
+        "operationId": "updateCars",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddCar"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Car ID"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CarAssociateUser"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "ID Not Found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "bearer_auth": []
+          }
+        ]
+      },
+
+      "delete": {
+        "tags": [
+          "cars"
+        ],
+        "summary": "Delete car by ID",
+        "description": "Deleting a car data by ID. This action can only be performed by Super Admin and Admin.",
+        "operationId": "deleteCars",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Car ID"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CarAssociateUser"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "ID Not Found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "security": [
+          {
+            "bearer_auth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Ping": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Ping successfully"
+          }
+        }
+      },
+      "Car": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid4",
+            "example": "07fa4cc9-4b87-40e4-a3a7-20586b179c9f"
+          },
+          "name": {
+            "type": "string",
+            "example": "Ford F150"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "small",
+              "medium",
+              "large"
+            ],
+            "example": "large"
+          },
+          "image": {
+            "type": "string",
+            "example": "https://cdn.motor1.com/images/mgl/WpjRL/s1/2021-ford-f-150.jpg"
+          },
+          "capacity": {
+            "type": "integer",
+            "example": 2
+          },
+          "rentPerDay": {
+            "type": "integer",
+            "example": 200000
+          },
+          "description": {
+            "type": "string",
+            "example": "The most popular variant of the F-Series."
+          },
+          "availableAt": {
+            "type": "string",
+            "example": "2022-03-23T15:49:05.563Z"
+          },
+          "createdAt": {
+            "type": "string",
+            "example": "2023-10-23T04:19:36.485Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "example": "2023-10-23T04:19:36.485Z"
+          },
+          "deletedAt": {
+            "type": "string",
+            "example": "2023-10-23T04:19:36.485Z"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid4",
+            "example": "7435933c-78e6-48e4-b407-d6f73b109a4c"
+          },
+          "name": {
+            "type": "string",
+            "example": "Mia"
+          },
+          "email": {
+            "type": "string",
+            "example": "superadmin@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "superadmin"
+          },
+          "phoneNumber": {
+            "type": "integer",
+            "example": 12314141
+          },
+          "address": {
+            "type": "string",
+            "example": "Tangsel"
+          },
+          "roles": {
+            "type": "string",
+            "enum": [
+              "SUPERADMIN",
+              "ADMIN",
+              "MEMBER"
+            ],
+            "example": "SUPERADMIN"
+          },
+          "createdAt": {
+            "type": "string",
+            "example": "2023-10-23T04:24:54.116Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "example": "2023-10-23T04:24:54.116Z"
+          }
+        }
+      },
+      "CredentialLogin": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "superadmin@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "superadmin"
+          }
+        }
+      },
+      "AddUser": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Mia"
+          },
+          "email": {
+            "type": "string",
+            "example": "halo@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "1105"
+          },
+          "phoneNumber": {
+            "type": "integer",
+            "example": 38521234
+          },
+          "address": {
+            "type": "string",
+            "example": "Indonesia"
+          }
+        }
+      },
+      "AddCar": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "BMW X5"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "small",
+              "medium",
+              "large"
+            ],
+            "example": "medium"
+          },
+          "image": {
+            "type": "string",
+            "example": "https://imgd.aeplcdn.com/664x374/n/cw/ec/152681/x5-exterior-right-front-three-quarter-5.jpeg"
+          },
+          "capacity": {
+            "type": "integer",
+            "example": 6
+          },
+          "rentPerDay": {
+            "type": "integer",
+            "example": 800000
+          },
+          "description": {
+            "type": "string",
+            "example": "Mid-size luxury SUV produced by BMW."
+          },
+          "availableAt": {
+            "type": "string",
+            "example": "2023-03-23T15:49:05.563Z"
+          }
+        }
+      },
+      "CarAssociateUser": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid4",
+            "example": "07fa4cc9-4b87-40e4-a3a7-20586b179c9f"
+          },
+          "name": {
+            "type": "string",
+            "example": "Ford F150"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "small",
+              "medium",
+              "large"
+            ],
+            "example": "large"
+          },
+          "image": {
+            "type": "string",
+            "example": "https://cdn.motor1.com/images/mgl/WpjRL/s1/2021-ford-f-150.jpg"
+          },
+          "capacity": {
+            "type": "integer",
+            "example": 2
+          },
+          "rentPerDay": {
+            "type": "integer",
+            "example": 200000
+          },
+          "description": {
+            "type": "string",
+            "example": "The most popular variant of the F-Series."
+          },
+          "availableAt": {
+            "type": "string",
+            "example": "2022-03-23T15:49:05.563Z"
+          },
+          "createdAt": {
+            "type": "string",
+            "example": "2023-10-23T04:19:36.485Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "example": "2023-10-23T04:19:36.485Z"
+          },
+          "deletedAt": {
+            "type": "string",
+            "example": "2023-10-23T04:19:36.485Z"
+          },
+          "createdBy": {
+            "$ref": "#/components/schemas/User"
+          },
+          "updatedBy": {
+            "$ref": "#/components/schemas/User"
+          },
+          "deletedBy": {
+            "$ref": "#/components/schemas/User"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearer_auth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
