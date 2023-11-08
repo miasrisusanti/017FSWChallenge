@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+## Challenge 06: Converting [https://github.com/miasrisusanti/017FSWChallenge/tree/main/Challenge02](Challenge02) into ReactJS form.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Created with JavaScript, Node.js, and ReactJS.
 
-## Available Scripts
 
-In the project directory, you can run:
+### How to run this project?
+1. Clone the repository
+```
+git clone https://github.com/miasrisusanti/017FSWChallenge
+```
 
-### `npm start`
+2. Change directory to Challenge06
+```
+cd/Challenge06
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3. Install all dependencies package on package.json using
+```
+npm i
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+4. Check the config/config.json. Please change the `username` and `password` to match your settings in PostgreSQL. You can also change the `database` to the name of a database you may have created previously (please change it in the `test_sequelize.js` too). ___NOTE:__ If you haven't created one, please provide a name to create a new database. And then create the database with:_ 
+```
+npx sequelize-cli db:create
+```
 
-### `npm test`
+5. Run the migrations
+```
+npx sequelize-cli db:migrate
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+6. Run the seeds
+```
+npx sequelize-cli db:seed:all
+```
 
-### `npm run build`
+7. Start the project
+```
+npm run start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+8. You can see the project through localhost or using the API documentation in Postman or in /docs endpoint.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Endpoint Explanation
+(_All actions performed via this endpoint will be synchronized with the DBMS._)
+1. GET / will open the root endpoint with a response of { "message": "Ping successful" }.
+2. GET /cars will display the list of cars.
+3. GET /cars/:id will retrieve a specific car's data from the list by its ID.
+4. POST /cars will return a response with the newly created car data.
+5. PUT /cars/:id will return a response with the updated data.
+6. DELETE /cars/:id will return a response 204 No Content (data deleted).
+7. API Documentation /docs will return API documentation.
+   - Login Super Admin
+     ```
+     email: superadmin@gmail.com
+     password: superadmin
+     ```
