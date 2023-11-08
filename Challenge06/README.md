@@ -1,4 +1,4 @@
-## Challenge 06: Converting [https://github.com/miasrisusanti/017FSWChallenge/tree/main/Challenge02](Challenge02) into ReactJS form.
+## Challenge 06: Converting Challenge02 Project into ReactJS form.
 
 Created with JavaScript, Node.js, and ReactJS.
 
