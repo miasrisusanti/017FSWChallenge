@@ -24,7 +24,7 @@ npm i
 npm start
 ```
 
-8. You can see the project through localhost:3000 via your web browser.
+5. You can see the project through localhost:3000 via your web browser.
 
 
 ### Endpoint Explanation
