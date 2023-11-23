@@ -8,6 +8,5 @@ Tugas kalian disini adalah:
 
 Good luck!
 
-```
-Check deployment on [Vercel](https://bcr-unit-test-7.vercel.app)
-```
+# Check deployment on
+[Vercel](https://bcr-unit-test-7.vercel.app)
